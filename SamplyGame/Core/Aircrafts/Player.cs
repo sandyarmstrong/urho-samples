@@ -94,7 +94,7 @@ namespace SamplyGame
 
 			if (hasInput)
 			{
-				Vector3 destWorldPos = ((SamplyGame)Application).Viewport.ScreenToWorldPoint(positionX, positionY, 10);
+				Vector3 destWorldPos = ((SamplyGameApp)Application).Viewport.ScreenToWorldPoint(positionX, positionY, 10);
 				destWorldPos.Z = 0;
 				aircraft.Translate(destWorldPos - aircraft.WorldPosition, TransformSpace.World);
 				foreach (var weapon in Node.Components.OfType<Weapon>())

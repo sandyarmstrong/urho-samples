@@ -8,7 +8,7 @@ namespace SamplyGame.Desktop
 		static void Main(string[] args)
 		{
 			DesktopUrhoInitializer.AssetsDirectory = @"../../Assets";
-			new SamplyGame().Run();
+			new SamplyGameApp().Run();
 		}
 	}
 }

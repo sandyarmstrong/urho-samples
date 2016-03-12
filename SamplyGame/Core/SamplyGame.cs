@@ -7,7 +7,7 @@ using Urho.Actions;
 
 namespace SamplyGame
 {
-	public class SamplyGame : Application
+	public class SamplyGameApp : Application
 	{
 		const string CoinstFormat = "{0} coins";
 
@@ -19,7 +19,7 @@ namespace SamplyGame
 
 		public Viewport Viewport { get; private set; }
 
-		public SamplyGame() : base(new ApplicationOptions(assetsFolder: "Data") { Height = 736, Width = 414, Orientation = ApplicationOptions.OrientationType.Portrait}) { }
+		public SamplyGameApp() : base(new ApplicationOptions(assetsFolder: "Data") { Height = 736, Width = 414, Orientation = ApplicationOptions.OrientationType.Portrait}) { }
 
 		protected override void Start()
 		{

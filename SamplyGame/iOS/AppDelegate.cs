@@ -18,7 +18,7 @@ namespace SamplyGame.iOS
 		async void LaunchGame()
 		{
 			await Task.Yield();
-			new SamplyGame().Run();
+			new SamplyGameApp().Run();
 		}
 	}
 }
