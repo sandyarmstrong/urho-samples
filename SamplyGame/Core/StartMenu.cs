@@ -71,6 +71,7 @@ namespace SamplyGame
 				Application.UI.Root.RemoveChild(textBlock, 0);
 				await bigAircraft.RunActionsAsync(new EaseIn(new MoveBy(1f, new Vector3(-10, -2, -10)), 3));
 				rotor.RemoveAllActions();
+				bigAircraft.Remove ();
 				menuTaskSource.TrySetResult(true);
 			}
 		}
