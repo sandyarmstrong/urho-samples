@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Urho;
 using Urho.Physics;
@@ -13,6 +14,16 @@ namespace SamplyGame
 	/// </summary>
 	public abstract class Aircraft : Component
 	{
+		EventHandler healthChanged;
+		public event EventHandler HealthChanged {
+			add {
+				if (healthChanged == null)
+					value (this, EventArgs.Empty);
+				healthChanged += value;
+			}
+			remove { healthChanged -= value; }
+		}
+
 		TaskCompletionSource<bool> liveTask;
 
 		protected Aircraft()
@@ -23,7 +34,14 @@ namespace SamplyGame
 		/// <summary>
 		/// Current health (less or equal to MaxHealth)
 		/// </summary>
-		public int Health { get; set; }
+		int health;
+		public int Health {
+			get { return health; }
+			set {
+				health = value;
+				healthChanged?.Invoke (this, EventArgs.Empty);
+			}
+		}
 
 		/// <summary>
 		/// Max health value 
