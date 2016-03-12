@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using SamplyGame.Aircrafts.Enemies;
 using Urho;
 using Urho.Gui;
@@ -14,6 +15,8 @@ namespace SamplyGame
 		int coins;
 		Scene scene;
 		Text coinsText;
+
+		public event EventHandler CoinCollected;
 
 		public Player Player { get; private set; }
 
@@ -110,7 +113,11 @@ namespace SamplyGame
 			}
 		}
 
-		public void OnCoinCollected() => UpdateCoins(coins + 1);
+		public void OnCoinCollected ()
+		{
+			UpdateCoins (coins + 1);
+			CoinCollected?.Invoke (this, EventArgs.Empty);
+		}
 
 		void UpdateCoins(int amount)
 		{
