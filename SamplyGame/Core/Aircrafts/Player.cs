@@ -8,6 +8,12 @@ namespace SamplyGame
 	public class Player : Aircraft
 	{
 		Node rotor;
+		private Settings settings;
+
+		public Player (Settings settings)
+		{
+			this.settings = settings;
+		}
 
 		protected override CollisionLayers CollisionLayer => CollisionLayers.Player;
 
@@ -24,7 +30,7 @@ namespace SamplyGame
 			var material = cache.GetMaterial(Assets.Materials.Player).Clone("");
 			model.SetMaterial(material);
 
-			node.SetScale(0.45f);
+			node.SetScale(settings.PlayerNodeScale);
 			node.Position = new Vector3(0f, -6f, 0f);
 			node.Rotation = new Quaternion(-40, 0, 0);
 

@@ -19,7 +19,12 @@ namespace SamplyGame
 
 		public Viewport Viewport { get; private set; }
 
-		public SamplyGameApp() : base(new ApplicationOptions(assetsFolder: "Data") { Height = 736, Width = 414, Orientation = ApplicationOptions.OrientationType.Portrait}) { }
+		public Settings Settings { get; }
+
+		public SamplyGameApp () : base (new ApplicationOptions (assetsFolder: "Data") { Height = 736, Width = 414, Orientation = ApplicationOptions.OrientationType.Portrait })
+		{
+			Settings = new Settings ();
+		}
 
 		protected override void Start()
 		{
@@ -77,7 +82,7 @@ namespace SamplyGame
 		async Task StartGame()
 		{
 			UpdateCoins(0);
-			Player = new Player();
+			Player = new Player(Settings);
 			var aircraftNode = scene.CreateChild(nameof(Aircraft));
 			aircraftNode.AddComponent(Player);
 			var playersLife = Player.Play();
@@ -117,5 +122,10 @@ namespace SamplyGame
 			coins = amount;
 			coinsText.Value = string.Format(CoinstFormat, coins);
 		}
+	}
+
+	public class Settings
+	{
+		public float PlayerNodeScale { get; set; } = 0.45f;
 	}
 }
