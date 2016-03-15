@@ -133,6 +133,6 @@ namespace SamplyGame
 
 	public class Settings
 	{
-		public float PlayerNodeScale { get; set; } = 0.45f;
+		public float PlayerNodeScale { get; set; } = 0.85f;
 	}
 }
