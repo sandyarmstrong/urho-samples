@@ -19,7 +19,7 @@ namespace SamplyGame
 
 		protected override Vector3 CollisionShapeSize => new Vector3(2.1f, 1.2f, 1.2f); // extend default shape to get collisions by wings too
 
-		public override int MaxHealth => 70;
+		public override int MaxHealth => settings.PlayerMaxHealth;
 
 		protected override async void Init()
 		{

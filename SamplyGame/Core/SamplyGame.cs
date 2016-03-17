@@ -36,6 +36,15 @@ namespace SamplyGame
 			Input.SubscribeToKeyDown(e => { if (e.Key == Key.Esc) Engine.Exit(); });
 		}
 
+		public Text CreateText (string textValue)
+		{
+			var text = new Text { Value = textValue };
+			text.SetFont(
+				ResourceCache.GetFont(Assets.Fonts.Font),
+				Graphics.Width / 20);
+			return text;
+		}
+
 		async void CreateScene()
 		{
 			scene = new Scene();
@@ -134,5 +143,7 @@ namespace SamplyGame
 	public class Settings
 	{
 		public float PlayerNodeScale { get; set; } = 0.85f;
+
+		public int PlayerMaxHealth { get; set; } = 70;
 	}
 }
